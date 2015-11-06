@@ -1,0 +1,49 @@
+@page { margin:1mm; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    -webkit-print-color-adjust:exact;
+}
+
+.page {
+    width: 210mm;
+    height: 297mm;
+    background-color: white;
+    margin:auto;
+    /*border: 1px #D3D3D3 solid;*/
+    margin-bottom:22mm;
+    display: block;
+}
+
+.ronda {
+    float:left;
+    width:100mm;
+    position: relative;        
+}
+
+.table_round{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.td_equipo{
+    min-width: 120px;
+    text-align: center;
+}
+
+th{
+    border-bottom: 1px solid black;
+}
+
+.tr_1{
+    background-color: #f4f4f4;
+}
+
+.clasificacion {
+    width:80%;
+    margin:auto;
+    margin-top: 100px;
+    font-size: 24pt;
+}

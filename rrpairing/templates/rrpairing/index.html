@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'rrpairing/style.css' %}" />
+    <title></title>
+</head>
+<body>
+    {% if tournament_list %}
+    <ul>
+    {% for tournament in tournament_list %}
+        <li><a href="{% url 'rrpairing:detail' tournament.id %}">{{ tournament.name }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No hay torneos.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'rrpairing/print.css' %}" />
+    <title>{{nombre_torneo}} - Cuadro de resultados</title>
+</head>
+<body>
+<div class="page">
+    {% for team in teams %}
+    <div style="{float:left; width:10%}">
+        <h4>{{ team.name }}</h4>
+        {% for round in rounds %}
+            {% if round.played %}
+            {% for game in round.team_game_set.all %}
+                {% if game.white_team.name == team.name %}
+                    Ronda {{round.number}}: {{game.black_team}} - {{ game.white_result }}<br />
+                {% elif game.black_team.name == team.name %}
+                    Ronda {{round.number}}: {{game.white_team}} - {{ game.black_result }}<br />
+                {% endif %}
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>

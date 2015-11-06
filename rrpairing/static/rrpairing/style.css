@@ -1,0 +1,46 @@
+body{
+    background-color: aliceblue;
+}
+
+.table_round{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th{
+    background-color: #c0c0c0;
+}
+
+.tr_1{
+    background-color: #c0c0e5;
+}
+
+.td_equipo{
+    min-width: 150px;
+    text-align: center;
+}
+
+#rondas{
+    position: absolute;
+    float: left;
+}
+
+#clasificacion{   
+    position: fixed;
+    right:0px;
+}
+
+#enlaces_a_rondas{
+    position: fixed;    
+    margin:20px 38%;
+}
+
+.result_field{
+    text-align: center;
+}
+
+.player_entry{
+    float: left;
+    margin: 2%;
+}
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'rrpairing/print.css' %}" />
+    <title>{{nombre_torneo}}</title>
+</head>
+<body>
+<div class="page">
+<center><h2>{{nombre_torneo}}</h2></center>
+    {% for round in rounds_list %}
+    <div class="ronda">
+    <center>
+    <table class="table_round">
+       <th colspan="5">Ronda: {{ round.number }}</th>
+        {% for game in round.team_game_set.all %}
+            <tr class = "tr_{% if forloop.counter|divisibleby:2 %}1{% else %}0{% endif %}" >
+                <td class = "td_equipo">{{ game.white_team }}</td>
+                <td>{% if round.played %} {{ game.white_result|safe }} {% else %} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endif %}</td>
+                <td>:</td>
+                <td>{% if round.played %} {{ game.black_result|safe }} {% else %} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endif %}</td>
+                <td class = "td_equipo">{{ game.black_team }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </center>
+    <br>
+    </div>
+
+    {% if round.number|divisibleby:10 %} </div><div class="page"> <center><h4>{{nombre_torneo}}</h4></center>  {% endif %}
+    {% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'rrpairing/print.css' %}" />
+    <title>{{ronda}}</title>
+</head>
+<body>
+
+{% for game in games_list %}
+    {% if forloop.counter|divisibleby:2 %}{% else %}<div class="page">{% endif %}
+    <div class="acta">
+        <center><h1 class="torneo_acta">{{torneo}}</h1></center>
+        <h4>RONDA NÚMERO: <span class="numero_ronda">{{round.number}}</span></h4>
+        <center>
+        <table class="actas_equipos">
+            <tr>
+                <td><span class="team_name_slip"> {{ game.white_team }} </span></td>
+                <td><span class="team_name_slip"> {{ game.black_team }} </span></td>
+            </tr>
+            <tr>
+                <td>
+                    <center>
+                    <table class="team_members">
+                        {% for player in game.white_team.player_set.all %}
+                        <tr><td>{{player}}</td></tr>
+                        {% endfor %}
+                    </table>
+                    </center>
+                </td>
+                <td>
+                    <table class="team_members">
+                        {% for player in game.black_team.player_set.all %}
+                        <tr><td>{{player}}</td></tr>
+                        {% endfor %}
+                    </table>
+                </td>
+            </tr>
+        </table>
+            <div class="firma_w">Firma:</div>
+            <div class="firma_b">Firma:</div>
+            <div class="resultado">
+                Resultado: <div class="celda"></div><div class="celda"></div>
+            </div>
+        </center>
+
+
+    </div>
+    {% if forloop.counter|divisibleby:2 %}</div>{% endif %}
+{% endfor %}
+</body>
+</html>

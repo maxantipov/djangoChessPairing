@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'rrpairing/print.css' %}" />
+    <title>{{nombre_torneo}}</title>
+</head>
+<body>
+<div class="page">
+    <div class="clasificacion">
+        <center>
+    <table class="table_round">
+        <th colspan="2">Clasificacion  {{nombre_torneo}}</th>
+    {% for points,team in teams_list %}
+        {% if team != "Descansa" %}
+        <tr class = "tr_{% if forloop.counter|divisibleby:2 %}1{% else %}0{% endif %}" >
+        <td class = "td_equipo">{{ team }} </td><td class = "td_equipo">{{ points }}</td>
+        </tr>
+        {% endif %}
+
+    {% endfor %}
+    </table>
+    </center>
+    </div>
+</div>
+</body>
+</html>
